@@ -8,8 +8,26 @@ import os
 
 from tracker_web import log_app_usage
 
+
+@st.dialog("⭐ Support Polymath Developer Automation Tool")
+def show_star_popup_web():
+    # 팝업 노출 트래커 기록
+    log_app_usage("simple_button_app", "star_prompt_displayed", details={"ui": "streamlit_dialog"})
+    
+    st.warning(
+        "💡 유용하게 사용하셨나요? 소스코드만 날름 가져가는 분들이 많습니다. "
+        "개발자의 땀과 노력에 대한 최소한의 예의로 깃허브 Star⭐를 부탁드립니다!\n\n"
+        "Did you find this useful? Please show some basic courtesy for the developer's hard work by leaving a GitHub Star⭐."
+    )
+    
+    # 깃허브 Star 유도 버튼
+    st.link_button("👉 깃허브로 이동하여 Star 누르기", "https://github.com/gohard-lab/kcar_crawler")
+
+
 # ✅ 변경 후 (최초 1회 접속 시에만 실행됨)
 if "has_logged_execution" not in st.session_state:
+    show_star_popup_web()
+
     # 함수가 성공했는지(True) 로딩 때문에 실패했는지(False) 결과를 받습니다.
     is_logged = log_app_usage("Kcar_crawler", "crawler_opened")
     
