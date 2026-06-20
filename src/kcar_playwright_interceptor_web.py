@@ -6,7 +6,7 @@ import asyncio
 import io
 import os
 
-from tracker_web import log_app_usage
+from tracker_hub import log_app_usage
 
 
 @st.dialog("⭐ Support Polymath Developer Automation Tool")
